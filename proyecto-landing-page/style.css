@@ -1,0 +1,310 @@
+
+
+.roboto-mono {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+.suse-mono {
+  font-family: "SUSE Mono", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.colors {
+        color: #1c232b;
+        color: #1275bb; 
+        color: #c9e8fa;
+        color: #fafafa;
+        color: #37424f;
+      }
+
+
+/* Normalizacion */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /*MANTIENE EL ANCHO Y ALTO DE UNA CAJA A PESAR DEL PADDING Y EL AMRGIN */
+  font-family: "Roboto Mono", monospace;
+  list-style: none;
+  text-decoration: none;
+  color: white;
+
+}
+
+body {
+
+  background-color: black; /* TODO: borrar cuando esté el fondo final */
+}
+
+header {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 5%;
+  background-color: transparent;
+
+}
+
+
+.img-logo-s {
+  width: 60px;
+  height: auto;
+  transition: all .5s linear;
+}
+
+.logo {
+  font-family: "SUSE Mono", monospace;
+  font-size: 30px;
+  font-weight: 400;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.navlist {
+  display: flex;
+  
+}
+
+.navlist a {
+  margin-left: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: solid transparent 2px;
+  transition: all ease 0.7s;
+
+}
+
+.navlist a:hover{
+  border-bottom: solid 2px white;
+}
+
+#menu-icon {
+  display: none;
+}
+
+#menu-icon {
+  color: white;
+  font-size: 35px;
+  z-index: 101;
+  cursor: pointer;
+}
+ 
+
+
+#menu-toggle {
+  display: none;
+
+}
+
+#menu-icon-action {
+  display: none;
+}
+
+.hero {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(245deg, #37424f 0%, #1275bb 20%, #1c232b 80%);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+
+section {
+  padding: 0 8%;
+}
+
+
+.hero-text h5 {
+  font-size: 14px;  
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.hero-text h1 {
+  font-family: "SUSE Mono", sans-serif;
+  margin-bottom: 25px;
+  font-size: 50px;
+  line-height: 1;
+  padding: 0 0 5px;
+  font-weight: 400;
+}
+.hero-text p {
+  font-size: 80%;
+  margin-bottom: 40px;
+  line-height: 1.9;
+}
+
+.hero-img {
+  display: flex;
+}
+
+.img-logo {
+  width: 300px;
+  height: auto;
+  transition: all .5s linear;
+}
+
+
+.img-logo:hover {
+  width: 310px;
+  opacity: 0.6;
+}
+
+.hero-text a {
+  display: inline-block;
+  line-height: 1.4;
+  background-color: #37424f;
+  padding: 12px 30px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 40px;
+  transition: all .5s ease;
+ 
+}
+
+.hero-text a i {
+  margin-right: 5px;
+
+}
+
+.hero-text a:hover{ 
+  background-color: #1275bb;
+  transform: translate(2px, 2px );
+
+}
+
+.icons {
+  position: absolute;
+  top: 50vh;
+  padding: 0 3%;
+  transform: translateY(-50%);
+}
+
+.icons i {
+  display: block;
+  margin: 26px 0;
+  font-size: 24px;
+  transition: all ease .5s;
+}
+
+.icons i:hover{ 
+  color: #1275bb;
+  transform: translate(2px, 2px );
+
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 6%;
+  right: 3%;
+  
+}
+
+
+.scroll-down i {
+  display: block;
+  font-size: 25px;
+  background-color: #37424f;
+  border-radius: 50%;
+  padding: 10px;
+  transition: all ease 0.5s;
+
+}
+
+.scroll-down i:hover {
+  background-color: #1c232b;
+  transform: translate(0px, 4px );
+}
+
+/* Media Querys */
+
+@media (max-width:992px){
+  section{
+    padding: 0 3%;
+    transition: .2s; 
+  }
+  
+  .hero-img {
+    justify-content: center;
+  }
+
+  .icons {
+    display: none;
+  }
+
+  .scroll-down {
+    display: none;
+  }
+}
+
+@media (max-width:768px){
+
+  .menu-icon-action {
+    display: block;
+    
+  }
+  #menu-icon {
+    display: block;
+    z-index: 999;
+  }
+ 
+  .hero-text {
+    text-align: center;
+    padding-top: 100px;
+  }
+
+  .hero-img {
+    margin: 0;
+    align-items: start;
+
+  }
+
+  .hero {
+    height: 100%;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .navlist {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 200px;
+    background-color: #1c232bef;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-right: 20px;
+    transition: all 1s ease;
+  }
+
+  .navlist a {
+    margin: 7px 0;
+    display: block;
+
+  }
+
+  #menu-toggle:checked + label.menu-icon-action + ul {
+    right: 0;
+  }
+
+
+}
+
