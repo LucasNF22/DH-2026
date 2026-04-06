@@ -5,27 +5,48 @@ let tareas = [
   {
     indice: 0,
     nombre: 'comprar comida',
-    fechaLimite: null,
+    fechaLimite: "01/05/2026",
     completada: true,
     categoria: 1
-  },
+  }, 
   {
-    indice: 0,
+    indice: 1,
     nombre: 'comprar regalos',
-    fechaLimite: null,
+    fechaLimite: "01/05/2026",
     completada: false,
     categoria: 1
   },
   {
-    indice: 1,
+    indice: 2,
     nombre: 'ver pelicula',
-    fechaLimite: null,
+    fechaLimite: "20/05/2026",
     completada: false,
     categoria: 2
   },
   {
-    indice: 2,
+    indice: 3,
     nombre: 'pagar proveedores',
+    fechaLimite: "10/03/2026",
+    completada: false,
+    categoria: 0
+  },
+  {
+    indice: 4,
+    nombre: 'aaa',
+    fechaLimite: "10/03/2026",
+    completada: false,
+    categoria: 0
+  },
+  {
+    indice: 5,
+    nombre: 'zzz',
+    fechaLimite: "10/03/2026",
+    completada: false,
+    categoria: 0
+  },
+  {
+    indice: 6,
+    nombre: 'jjj',
     fechaLimite: "10/03/2026",
     completada: false,
     categoria: 0
@@ -160,6 +181,74 @@ function tareasPendientes(){
 
 }
 
+// Funcion para ordenar tareas por "nombre" utilzando bubbleSort
+
+function ordenarTareasPorNombre() {
+  
+  let total = tareas.length;
+
+  for (let j = 0; j < total; j++) {
+    
+    for (let i = 0; i < total - 1; i++) {
+      if (tareas[i].nombre > tareas[i + 1].nombre) {
+        
+        // Intercambiar tareas
+        let temp = tareas[i];
+        tareas[i] = tareas[i + 1];
+        tareas[i + 1] = temp;
+      }
+    }
+    
+  }
+}
+
+// Funcion para ordenar tareas por "Fecha" utilzando bubbleSort
+
+function ordenarTareasPorFecha() {
+  
+  let total = tareas.length;
+
+  for (let j = 0; j < total; j++) {
+    
+    for (let i = 0; i < total - 1; i++) {
+      if (tareas[i].fechaLimite > tareas[i + 1].fechaLimite) {
+        
+        // Intercambiar tareas
+        let temp = tareas[i];
+        tareas[i] = tareas[i + 1];
+        tareas[i + 1] = temp;
+      }
+    }
+    return tareas;
+  }
+
+}
+
+// Funcion para buscar una tarea por nombre y retornar su posicion.
+
+function buscarTareaPorNombre(nombreTarea) {
+
+  let inicio = 0;
+  let fin = tareas.length - 1;  
+
+  while( inicio <= fin ){
+
+    let posElementoMedio = Math.round((inicio + fin) / 2);
+
+    if( tareas[posElementoMedio].nombre === nombreTarea ){
+      return posElementoMedio;
+    
+    } else if ( tareas[posElementoMedio].nombre < nombreTarea ){
+      inicio = posElementoMedio + 1;
+    } else {
+      fin = posElementoMedio - 1;
+    }
+
+  }
+}
+
+
+
 // Funcion para mostrar el menu de opciones
 
 function mostrarMenu() {
@@ -176,7 +265,9 @@ function mostrarMenu() {
   console.log("8. Filtrar tareas por categoria");
   console.log("9. Ver tareas completadas por categoria");
   console.log("10. Ver tareas pendientes");
-  
+  console.log("11. Ordenar tareas por nombre");
+  console.log("12. Ordenar tareas por fecha");
+  console.log("13. Buscar tarea por nombre");
   console.log("0. Salir");
   console.log("              ");
 }
@@ -296,6 +387,33 @@ function interactuarConUsuario() {
         tareasPendientes();
         
         break;
+
+      case 11:
+        ordenarTareasPorNombre();
+        console.log("Tareas ordenadas por nombre: ");
+        console.log(tareas);
+        break;
+
+      case 12:
+        ordenarTareasPorFecha();
+        console.log("Tareas ordenadas por fecha: ");
+        console.log(tareas);
+        break;
+
+      case 13:
+        ordenarTareasPorNombre(); // ordenamos por nombre para que la busqueda binaria funcione correctamente
+        
+        let nombreTarea = prompt("Ingrese el nombre de la tarea que desea buscar: ");
+        let resultadoBusqueda = buscarTareaPorNombre(nombreTarea);
+
+        if(resultadoBusqueda !== -1){
+          console.log("Tarea encontrada: ");
+          console.log(tareas[resultadoBusqueda]);
+        } else {
+          console.log("Tarea no encontrada.");
+        }
+
+        break
 
       case 0:
         opcion = 0;
